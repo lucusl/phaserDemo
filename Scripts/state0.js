@@ -11,6 +11,9 @@ demo.state0.prototype = {
 		console.log('state 0 mother fucker');
 		addStateKeyEventListners();
 
+		//REMEMBER THIS TO SCALE to viewport
+		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+
 	},
 	update: function(){}
 };
