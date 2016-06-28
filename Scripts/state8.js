@@ -6,6 +6,8 @@ demo.state8.prototype = {
 	create: function(){
 		game.stage.backgroundColor = '#dddddd';
 		console.log('state 8 mother fucker');
+		addStateKeyEventListners();
+		
 	},
 	update: function(){}
 };

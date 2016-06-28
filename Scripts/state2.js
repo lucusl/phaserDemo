@@ -6,6 +6,8 @@ demo.state2.prototype = {
 	create: function(){
 		game.stage.backgroundColor = '#dddddd';
 		console.log('state 2 mother fucker');
+		addStateKeyEventListners();
+		
 	},
 	update: function(){}
 };
