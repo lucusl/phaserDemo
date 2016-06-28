@@ -1,11 +1,11 @@
 //seting the state in an empty fuction 
-demo.state2 = function() {};
+demo.state9 = function() {};
 
-demo.state2.prototype = {
+demo.state9.prototype = {
 	preload: function(){},
 	create: function(){
 		game.stage.backgroundColor = '#dddddd';
-		console.log('state 2 mother fucker');
+		console.log('state 9 mother fucker');
 	},
 	update: function(){}
 };
