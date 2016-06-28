@@ -9,7 +9,13 @@ demo.state0.prototype = {
 	create: function(){
 		game.stage.backgroundColor = '#a64dff';
 		console.log('state 0 mother fucker');
-		
+		game.input.keyboard.addKey(Phaser.Keyboard.ONE).onDown.add(changeState, null, null, 1);
+
 	},
 	update: function(){}
 };
+
+function changeState(i, stateNum){
+	console.log('fire');
+    game.state.start('state' + stateNum);
+}
