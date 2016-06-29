@@ -1,11 +1,21 @@
 //name of game 
 var demo = {};
 
+//Game config
+var centerX = 1500/2;
+var centerY = 1000/2;
+var dave; 
+var speed = 4;
+
 //seting the state in an empty fuction 
 demo.state0 = function() {};
 
 demo.state0.prototype = {
-	preload: function(){},
+	preload: function(){
+		game.load.image('dave', 'assets/Sprites/dave.png')
+
+
+	},
 	create: function(){
 		game.stage.backgroundColor = '#a64dff';
 		console.log('state 0 mother fucker');
@@ -14,8 +24,27 @@ demo.state0.prototype = {
 		//REMEMBER THIS TO SCALE to viewport
 		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 
+		dave = game.add.sprite(centerX,centerY, 'dave');
+		dave.anchor.x = 0.5;
+	    dave.anchor.y = 0.5;
+
+
 	},
-	update: function(){}
+	update: function(){
+		if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+			dave.x += speed;
+		}
+	  else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+			dave.x -= speed;
+	}
+
+		if (game.input.keyboard.isDown(Phaser.Keyboard.UP)){
+			dave.y -= speed;
+		}
+	  else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+			dave.y += speed;
+	}
+ }
 };
 
 
