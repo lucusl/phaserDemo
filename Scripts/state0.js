@@ -5,41 +5,64 @@ var demo = {};
 var centerX = 1500/2;
 var centerY = 1000/2;
 var dave; 
-var speed = 4;
+var speed = 6;
 
 //seting the state in an empty fuction 
 demo.state0 = function() {};
 
 demo.state0.prototype = {
 	preload: function(){
-		game.load.image('dave', 'assets/Sprites/dave.png')
+		game.load.spritesheet('dave', 'assets/spriteSheets/adamSprite.png', 260, 510)
+		game.load.image('BG1', 'assets/Background/BG1.png')
 
 
 	},
 	create: function(){
+
+		game.physics.startSystem(Phaser.Physics.ARCADE)
+
 		game.stage.backgroundColor = '#a64dff';
 		console.log('state 0 mother fucker');
 		addStateKeyEventListners();
 
+		game.world.setBounds(0,0,2800,1000)
 		//REMEMBER THIS TO SCALE to viewport
 		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+	    var BG1 = game.add.sprite(0, 0, 'BG1');
 
-		dave = game.add.sprite(centerX,centerY, 'dave');
+		dave = game.add.sprite(centerX,centerY + 200, 'dave');
 		dave.anchor.x = 0.5;
 	    dave.anchor.y = 0.5;
+	    dave.scale.setTo(0.7, 0.7);
+	    game.physics.enable(dave);
+	    dave.body.collideWorldBounds = true;
+	    dave.animations.add('walk', [0,1,2,3]);
 
+	    game.camera.follow(dave);
+	    game.camera.deadzone = new Phaser.Rectangle(centerX - 300, 0, 600,1000);
 
 	},
 	update: function(){
 		if (game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+		    dave.scale.setTo(0.7, 0.7);
 			dave.x += speed;
+			dave.animations.play('walk', 14, true);
 		}
 	  else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
-			dave.x -= speed;
+			  dave.scale.setTo(-0.7, 0.7);	
+			  dave.x -= speed;
+			dave.animations.play('walk', 14, true);
+	}
+	else{
+		dave.animations.stop('walk')
+		dave.frame = 0;
 	}
 
 		if (game.input.keyboard.isDown(Phaser.Keyboard.UP)){
 			dave.y -= speed;
+			if(dave.y < 633.75){
+				dave.y = 633.75;
+			}
 		}
 	  else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
 			dave.y += speed;
