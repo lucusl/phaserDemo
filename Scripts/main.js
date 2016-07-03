@@ -1,6 +1,7 @@
 var game = new Phaser.Game(1500, 1000, Phaser.AUTO);
 
-//adding state 1 to our game 
+
+//adding states to our game 
 game.state.add('state0', demo.state0);
 game.state.add('state1', demo.state1);
 game.state.add('state2', demo.state2);
@@ -16,3 +17,4 @@ game.state.add('state9', demo.state9);
 
 //setting state 1 to be the starting state
 game.state.start('state0');
+
